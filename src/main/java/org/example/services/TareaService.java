@@ -70,6 +70,20 @@ public class TareaService implements ITareaService {
     }
 
     @Override
+    public List<Tarea> obtenerCompletadas() {
+        return this.tareas.stream()
+                .filter(Tarea::isCompletado)
+                .toList();
+    }
+
+    @Override
+    public List<Tarea> obtenerPendientes() {
+        return this.tareas.stream()
+                .filter(t -> !t.isCompletado())
+                .toList();
+    }
+
+    @Override
     public boolean eliminar(int id) {
         Optional<Tarea> tarea = this.obtenerPorId(id);
         if (tarea.isPresent()) {
