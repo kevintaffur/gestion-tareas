@@ -11,6 +11,7 @@ public class Tarea {
     private String prioridad;
     private boolean completado;
 
+    // tarea siempre se inicia como pendiente (completado=false)
     public Tarea(String titulo, String descripcion, Date fechaVencimiento, String prioridad) {
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -69,8 +70,8 @@ public class Tarea {
     public String toString() {
         return "-----------------------------------------------------------------" + "\n" +
                 "ID: " + id + "\n" +
-                "Titulo: " + titulo + "\n" +
-                "Descripcion: " + descripcion + "\n" +
+                "Título: " + titulo + "\n" +
+                "Descripción: " + descripcion + "\n" +
                 "Fecha de Vencimiento: " + fechaVencimiento + "\n" +
                 "Prioridad: " + prioridad + "\n" +
                 "Completado: " + (completado ? "Sí" : "No") + "\n" +

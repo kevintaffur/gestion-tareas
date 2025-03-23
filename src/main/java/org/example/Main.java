@@ -68,7 +68,7 @@ public class Main {
                     OrdenarTareasPorFechaVencimiento();
                     break;
                 default:
-                    System.out.println("Opcion no valida.");
+                    System.out.println("Opción no válida.");
                     break;
             }
         }
@@ -78,20 +78,23 @@ public class Main {
         System.out.println("Agregar tarea");
         String titulo = "";
         do {
-            System.out.print("Ingrese un titulo: ");
+            System.out.print("Ingrese un título: ");
             titulo = sc.nextLine();
         } while (titulo.trim().equals(""));
         String descripcion = "";
         do {
-            System.out.print("Ingrese una descripcion: ");
+            System.out.print("Ingrese una descripción: ");
             descripcion = sc.nextLine();
         } while (descripcion.trim().equals(""));
         Date fecha = null;
         do {
             try {
+                //  la única fecha posible de ingresar es en formato dd/mm/yyyy
                 System.out.print("Ingrese una fecha de vencimiento (DD/MM/YYYY): ");
                 String fechaString = sc.nextLine();
+                // array de valores ingresados como strings
                 String[] fechaArr = fechaString.split("/");
+                // conversión de strings y creación de objeto fecha
                 fecha = new Date(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
             } catch (Exception ex) {
                 System.out.println("Ingrese una fecha válida.");
@@ -101,6 +104,8 @@ public class Main {
         do {
             System.out.print("Ingrese una prioridad (ALTA, MEDIA, BAJA): ");
             prioridad = sc.nextLine();
+
+            // no es posible ingresar una prioridad que no sea las definidas
             if (prioridad.trim().toUpperCase().equals("ALTA") ||
                 prioridad.trim().toUpperCase().equals("MEDIA") ||
                 prioridad.trim().toUpperCase().equals("BAJA")) {
@@ -139,16 +144,19 @@ public class Main {
 
                 String descripcion = "";
                 do {
-                    System.out.print("Ingrese una descripcion: ");
+                    System.out.print("Ingrese una descripción: ");
                     descripcion = sc.nextLine();
                 } while (descripcion.trim().equals(""));
 
                 Date fecha = null;
                 do {
                     try {
+                        // fecha en formato dd/mm/yyyy
                         System.out.print("Ingrese una fecha de vencimiento (DD/MM/YYYY): ");
                         String fechaString = sc.nextLine();
+                        // split de los números ingresados usando / como separador
                         String[] fechaArr = fechaString.split("/");
+                        // creación de objecto fecha
                         fecha = new Date(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
                     } catch (Exception ex) {
                         System.out.println("Ingrese una fecha válida.");
@@ -159,6 +167,8 @@ public class Main {
                 do {
                     System.out.print("Ingrese una prioridad (ALTA, MEDIA, BAJA): ");
                     prioridad = sc.nextLine();
+
+                    // solo se permite alta, media o baja como prioridad
                     if (prioridad.trim().toUpperCase().equals("ALTA") ||
                             prioridad.trim().toUpperCase().equals("MEDIA") ||
                             prioridad.trim().toUpperCase().equals("BAJA")) {
@@ -178,6 +188,7 @@ public class Main {
 
     public static void MarcarTareaCompletada() {
         System.out.println("Marcar tarea como completada");
+        // si no hay tareas retorna
         if (!MostrarTareas()) {
             return;
         }

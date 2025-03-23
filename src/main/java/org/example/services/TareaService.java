@@ -6,6 +6,8 @@ import java.util.*;
 
 public class TareaService implements ITareaService {
     private List<Tarea> tareas;
+
+    // mapeo de prioridades a ints para poder ordenarlos por prioridad
     private Map<String, Integer> prioridades = Map.of(
             "ALTA", 1,
             "MEDIA", 2,
